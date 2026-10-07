@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For You</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="icon" type="image/png" href="./static/heart.png">
+
+    <meta property="og:title" content="For You ❤️">
+    <meta property="og:description" content="This heart beats for you.">
+    <meta property="og:image" content="./heart.png">
+</head>
+
+<body>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="./static/open-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Background -->
+    <div class="background"></div>
+
+    <!-- Floating particles -->
+    <div class="particles"></div>
+
+    <main class="love-page">
+
+        <!-- Small label -->
+        <p class="eyebrow">
+            A little place for you
+        </p>
+
+        <!-- Main title -->
+        <h1>
+            This heart<br>
+            beats for <span>you.</span>
+        </h1>
+
+        <!-- Heart -->
+        <div class="heart-wrapper">
+
+            <div class="pulse"></div>
+
+            <button class="heart-button" aria-label="Click the heart">
+                <div class="heart">
+                    <img class="heart-image" src="./static/heart.png" alt="heart" />
+                </div>
+            </button>
+        </div>
+
+        <!-- Message -->
+        <p class="love-message">
+            Trái tim này đập vì em ❤️
+        </p>
+
+        <p class="hint">
+            Chạm vào trái tim
+        </p>
+
+        <!-- Counter -->
+        <section class="counter-section">
+
+            <p class="counter-label">
+                Together for
+            </p>
+
+            <div class="love-counter">
+                <span>0</span> days
+                <span>0</span> hours
+                <span>0</span> minutes
+                <span>0</span> seconds
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <p class="footer">
+            Made with love, just for you.
+        </p>
+
+    </main>
+
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,624 @@
+/* =========================================
+   ❤️ CINEMATIC HEART
+   ========================================= */
+:root {
+
+    --pink: #ff3158;
+    --pink-light: #ff7890;
+    --pink-soft: #ffb0bd;
+
+    --background: #010408;
+}
+
+/* =========================================
+   RESET
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+}
+
+body {
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 48%,
+            rgba(255, 20, 60, 0.08),
+            transparent 19%),
+
+        radial-gradient(circle at 50% 50%,
+            rgba(255, 30, 70, 0.035),
+            transparent 44%),
+
+        var(--background);
+
+    color: white;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+/* =========================================
+   BACKGROUND
+   ========================================= */
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(ellipse at center,
+            transparent 0%,
+            rgba(0, 0, 0, 0.12) 45%,
+            rgba(0, 0, 0, 0.88) 100%);
+
+    z-index: 1;
+}
+
+/* =========================================
+   AMBIENT PARTICLES
+   ========================================= */
+.ambient-particles {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    opacity: 0.75;
+}
+
+.ambient-particles::before,
+.ambient-particles::after {
+    content: "";
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 120, 140, 0.55);
+
+    box-shadow:
+
+        5vw 12vh 0 rgba(255, 80, 110, 0.35),
+
+        14vw 70vh 0 rgba(255, 120, 145, 0.22),
+
+        23vw 32vh 0 rgba(255, 70, 100, 0.32),
+
+        31vw 85vh 0 rgba(255, 120, 145, 0.24),
+
+        40vw 15vh 0 rgba(255, 80, 110, 0.20),
+
+        51vw 75vh 0 rgba(255, 120, 145, 0.30),
+
+        61vw 22vh 0 rgba(255, 80, 110, 0.24),
+
+        73vw 65vh 0 rgba(255, 120, 145, 0.20),
+
+        82vw 18vh 0 rgba(255, 80, 110, 0.30),
+
+        94vw 80vh 0 rgba(255, 120, 145, 0.24);
+
+    animation:
+        ambientFloat 10s ease-in-out infinite alternate;
+}
+
+.ambient-particles::after {
+
+    transform:
+        translate(18px,
+            35px);
+
+    opacity: 0.45;
+
+    animation-delay: -4s;
+}
+
+@keyframes ambientFloat {
+
+    from {
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+
+        transform:
+            translateY(-18px);
+    }
+}
+
+/* =========================================
+   PAGE
+   ========================================= */
+.trend-heart-page {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    z-index: 3;
+}
+
+
+/* =========================================
+   CANVAS
+   ========================================= */
+#heartCanvas {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 3;
+
+    pointer-events: auto;
+}
+
+/* =========================================
+   HEART AURA
+   ========================================= */
+.heart-aura {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width:
+        min(46vw, 620px);
+
+    height:
+        min(46vw, 620px);
+
+    transform:
+        translate(-50%,
+            -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+
+            rgba(255, 30, 70, 0.12),
+
+            rgba(255, 20, 60, 0.045) 32%,
+
+            transparent 70%);
+
+    filter:
+        blur(42px);
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+/* =========================================
+   CENTER CONTENT
+   ========================================= */
+.heart-content {
+
+    position: relative;
+
+    width: 100%;
+
+    text-align: center;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    transform:
+        translateY(-8px);
+
+    transition:
+
+        opacity 3.4s cubic-bezier(0.22,
+            1,
+            0.36,
+            1),
+
+        filter 3.4s cubic-bezier(0.22,
+            1,
+            0.36,
+            1),
+
+        transform 3.4s cubic-bezier(0.22,
+            1,
+            0.36,
+            1);
+}
+
+.heart-label {
+
+    margin-bottom: 20px;
+
+    color:
+        rgba(255,
+            150,
+            165,
+            0.72);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing:
+        0.55em;
+
+    text-transform:
+        uppercase;
+
+    animation:
+        textReveal 1.8s ease both;
+}
+
+.heart-content h1 {
+
+    font-size:
+        clamp(48px,
+            7vw,
+            88px);
+
+    line-height:
+        0.91;
+
+    letter-spacing:
+        -0.06em;
+
+    font-weight: 700;
+
+    text-shadow:
+
+        0 0 20px rgba(255,
+            60,
+            90,
+            0.10),
+
+        0 0 70px rgba(255,
+            30,
+            70,
+            0.055);
+
+    animation:
+        textReveal 2s 0.15s ease both;
+}
+
+.heart-content h1 span {
+
+    color:
+        var(--pink-light);
+
+    text-shadow:
+
+        0 0 15px rgba(255,
+            49,
+            88,
+            0.45),
+
+        0 0 45px rgba(255,
+            49,
+            88,
+            0.24);
+}
+
+.heart-description {
+
+    margin-top: 30px;
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.38);
+
+    font-size: 14px;
+
+    letter-spacing:
+        0.08em;
+
+    animation:
+        textReveal 2s 0.3s ease both;
+}
+
+/* =========================================
+   TEXT HIDDEN
+   ========================================= */
+.heart-content.text-hidden {
+
+    opacity: 0;
+
+    filter:
+        blur(13px);
+
+    transform:
+        translateY(-22px) scale(0.985);
+}
+
+/* =========================================
+   TOP MESSAGE
+   ========================================= */
+.top-message {
+
+    position: absolute;
+
+    top: 35px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.20);
+
+    font-size: 9px;
+
+    letter-spacing:
+        0.28em;
+
+    text-transform:
+        uppercase;
+
+    white-space: nowrap;
+
+    z-index: 20;
+
+    transition:
+
+        opacity 3s cubic-bezier(0.22,
+            1,
+            0.36,
+            1),
+
+        filter 3s ease,
+
+        transform 3s cubic-bezier(0.22,
+            1,
+            0.36,
+            1);
+
+    animation:
+        fadeIn 2s 1s both;
+}
+
+.top-message span {
+
+    width: 35px;
+    height: 1px;
+
+    background:
+        linear-gradient(to right,
+            transparent,
+            rgba(255,
+                100,
+                125,
+                0.28));
+}
+
+.top-message span:last-child {
+
+    background:
+        linear-gradient(to left,
+            transparent,
+            rgba(255,
+                100,
+                125,
+                0.28));
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.heart-footer {
+
+    position: fixed;
+
+    bottom: 28px;
+
+    left: 0;
+    right: 0;
+
+    z-index: 20;
+
+    text-align: center;
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.14);
+
+    font-size: 9px;
+
+    letter-spacing:
+        0.25em;
+
+    text-transform:
+        uppercase;
+
+    transition:
+
+        opacity 3s cubic-bezier(0.22,
+            1,
+            0.36,
+            1),
+
+        filter 3s ease,
+
+        transform 3s cubic-bezier(0.22,
+            1,
+            0.36,
+            1);
+
+    animation:
+        fadeIn 2s 1.2s both;
+}
+
+/* =========================================
+   TEXT REVEAL
+   ========================================= */
+@keyframes textReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+
+        filter:
+            blur(8px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+@media (max-width: 600px) {
+
+    .heart-aura {
+
+        width: 100vw;
+        height: 100vw;
+
+        filter:
+            blur(34px);
+    }
+
+    .heart-content {
+
+        transform:
+            translateY(-5px);
+    }
+
+    .heart-content h1 {
+
+        font-size: 51px;
+
+        line-height:
+            0.94;
+    }
+
+    .heart-description {
+
+        margin-top: 24px;
+
+        padding:
+            0 30px;
+
+        font-size: 12px;
+
+        letter-spacing:
+            0.05em;
+    }
+
+    .top-message {
+
+        top: 25px;
+
+        font-size: 7px;
+
+        letter-spacing:
+            0.18em;
+    }
+
+    .top-message span {
+
+        width: 20px;
+    }
+
+    .heart-footer {
+
+        bottom: 20px;
+
+        font-size: 7px;
+    }
+}
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+    }
+}

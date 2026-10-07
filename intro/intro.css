@@ -1,0 +1,1119 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050405;
+    color: #fff;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* BACKGROUND */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(80, 12, 25, 0.42) 0%,
+            rgba(25, 8, 13, 0.55) 32%,
+            #070506 70%,
+            #030303 100%);
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 30%,
+            rgba(255, 55, 85, 0.04),
+            transparent 30%),
+        radial-gradient(circle at 80% 70%,
+            rgba(255, 30, 70, 0.035),
+            transparent 35%);
+}
+
+/* FILM GRAIN */
+
+.film-grain {
+    position: fixed;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.07;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    animation: grain 0.18s steps(2) infinite;
+}
+
+@keyframes grain {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-2%, 1%);
+    }
+
+    40% {
+        transform: translate(1%, -2%);
+    }
+
+    60% {
+        transform: translate(2%, 2%);
+    }
+
+    80% {
+        transform: translate(-1%, -1%);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* DUST */
+
+.film-dust {
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+    pointer-events: none;
+    opacity: 0.18;
+    background-image:
+        radial-gradient(circle,
+            rgba(255, 255, 255, 0.5) 0 1px,
+            transparent 1px);
+    background-size: 150px 150px;
+    animation: dustMove 20s linear infinite;
+}
+
+@keyframes dustMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 150px 300px;
+    }
+}
+
+/* VIGNETTE */
+
+.vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at center,
+            transparent 28%,
+            rgba(0, 0, 0, 0.2) 58%,
+            rgba(0, 0, 0, 0.88) 100%);
+}
+
+/* LIGHT LEAK */
+
+.light-leak {
+    position: fixed;
+    width: 45vw;
+    height: 45vw;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 4;
+}
+
+.light-leak-1 {
+    left: -18vw;
+    top: -15vw;
+    background: rgba(255, 35, 70, 0.13);
+    animation: leakOne 15s ease-in-out infinite;
+}
+
+.light-leak-2 {
+    right: -18vw;
+    bottom: -18vw;
+    background: rgba(170, 25, 65, 0.11);
+    animation: leakTwo 18s ease-in-out infinite;
+}
+
+@keyframes leakOne {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+
+    35% {
+        opacity: 0.8;
+        transform: translate(12vw, 8vh);
+    }
+
+    65% {
+        opacity: 0.2;
+        transform: translate(20vw, 15vh);
+    }
+}
+
+@keyframes leakTwo {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+
+    45% {
+        opacity: 0.6;
+        transform: translate(-10vw, -8vh);
+    }
+
+    70% {
+        opacity: 0;
+        transform: translate(-14vw, -10vh);
+    }
+}
+
+/* CINEMA BARS */
+
+.cinema-bar {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 7vh;
+    background: #000;
+    z-index: 60;
+    pointer-events: none;
+}
+
+.cinema-bar-top {
+    top: 0;
+}
+
+.cinema-bar-bottom {
+    bottom: 0;
+}
+
+/* FILM FRAME */
+
+.film-frame {
+    position: fixed;
+    inset: 7vh 0;
+    z-index: 35;
+    pointer-events: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.025);
+    border-right: 1px solid rgba(255, 255, 255, 0.025);
+}
+
+.film-frame::before,
+.film-frame::after {
+    content: "";
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.film-frame::before {
+    top: 24px;
+}
+
+.film-frame::after {
+    bottom: 24px;
+}
+
+/* FILM */
+
+.film {
+    position: fixed;
+    inset: 7vh 0;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* SCENES */
+
+.scene {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.035);
+
+    transition:
+        opacity 1.7s cubic-bezier(.22, .61, .36, 1),
+        transform 3.2s cubic-bezier(.16, .78, .25, 1),
+        visibility 0s linear 1.7s;
+
+    overflow: hidden;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+
+    transition:
+        opacity 1.8s cubic-bezier(.22, .61, .36, 1),
+        transform 7s cubic-bezier(.16, .78, .25, 1),
+        visibility 0s;
+
+    z-index: 2;
+}
+
+.scene::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at center,
+            transparent 30%,
+            rgba(0, 0, 0, 0.16) 100%);
+}
+
+.scene-center,
+.scene-content {
+    position: relative;
+    z-index: 2;
+    width: min(100% - 60px, 1000px);
+    padding: 40px;
+    text-align: center;
+}
+
+/* TYPOGRAPHY */
+
+.eyebrow {
+    display: block;
+    margin-bottom: 28px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.42);
+}
+
+.scene h1,
+.scene h2 {
+    font-weight: 300;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+}
+
+.scene h1 {
+    font-size: clamp(58px, 9vw, 145px);
+}
+
+.scene h2 {
+    font-size: clamp(42px, 6.8vw, 105px);
+}
+
+.scene p {
+    margin-top: 24px;
+    font-size: clamp(14px, 1.35vw, 19px);
+    line-height: 1.85;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.54);
+}
+
+/* ELEGANT ITALIC */
+
+.scene h2 em,
+.start-content h1 em {
+    font-family: "Playfair Display", Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    color: rgba(255, 82, 105, 0.95);
+    text-shadow: 0 0 35px rgba(255, 45, 75, 0.14);
+}
+
+/* SCENE 01 */
+
+.scene-01 {
+    background:
+        radial-gradient(circle at center,
+            rgba(100, 10, 30, 0.13),
+            transparent 58%);
+}
+
+.scene-01 h1 {
+    animation: titleReveal 2.2s both;
+}
+
+.scene-01 p {
+    animation: subtitleReveal 2.8s 0.55s both;
+}
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes subtitleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SCENE 02 */
+
+.scene-02 {
+    justify-content: space-between;
+    padding: 8vw 11vw;
+}
+
+.scene-left {
+    position: relative;
+    z-index: 2;
+    width: 52%;
+    text-align: left;
+}
+
+.scene-right {
+    position: relative;
+    z-index: 2;
+    width: 32%;
+    padding-top: 60px;
+}
+
+.scene-number {
+    display: block;
+    margin-bottom: 28px;
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.scene-02 .scene-left h2 {
+    font-size: clamp(46px, 6.5vw, 100px);
+}
+
+.scene-02 .scene-right p {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: clamp(14px, 1.25vw, 18px);
+}
+
+/* DYNAMIC DATES */
+
+.friendship-date,
+.love-date {
+    font-variant-numeric: tabular-nums;
+}
+
+.friendship-duration,
+.love-duration {
+    font-variant-numeric: tabular-nums;
+}
+
+/* HIGHLIGHT */
+
+.friendship-duration {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.love-duration {
+    color: rgba(255, 255, 255, 0.96);
+}
+
+.scene-02 .friendship-duration {
+    color: rgba(255, 95, 115, 0.92);
+    font-weight: 400;
+}
+
+/* STORY TEXT */
+
+.story-text {
+    max-width: 920px;
+}
+
+.story-text p {
+    margin-top: 20px;
+}
+
+.story-text p:first-child {
+    margin-top: 0;
+}
+
+.story-text h2 {
+    margin-top: 38px;
+}
+
+/* SMALL TEXT */
+
+.small-text,
+.change-text {
+    display: block;
+    font-size: 10px !important;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.34);
+}
+
+.scene-05 h2 {
+    margin-top: 26px;
+}
+
+/* SCENE ACCENTS */
+
+.scene-08,
+.scene-14,
+.scene-23,
+.scene-final,
+.scene-heart {
+    background:
+        radial-gradient(circle at center,
+            rgba(105, 8, 30, 0.17),
+            transparent 58%);
+}
+
+.scene-14 .love-date {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.scene-14 h2 {
+    margin-top: 10px;
+}
+
+.scene-14 h2 em {
+    display: inline-block;
+    margin-top: 6px;
+    color: rgba(255, 80, 105, 0.98);
+}
+
+/* DATE */
+
+.date {
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 0.55em;
+    color: rgba(255, 255, 255, 0.34);
+    white-space: nowrap;
+}
+
+/* PHOTOS */
+
+.photo {
+    position: absolute;
+    overflow: hidden;
+    background: #100c0e;
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.58),
+        0 0 0 1px rgba(255, 255, 255, 0.035);
+
+    opacity: 0;
+}
+
+.photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.05),
+            transparent 45%,
+            rgba(0, 0, 0, 0.28));
+}
+
+.photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter:
+        saturate(0.78) contrast(1.04) brightness(0.76);
+
+    transform: scale(1.08);
+
+    transition:
+        transform 10s cubic-bezier(.16, .78, .25, 1),
+        filter 3s ease;
+}
+
+.scene.active .photo img {
+    transform: scale(1);
+    filter:
+        saturate(0.9) contrast(1.04) brightness(0.82);
+}
+
+/* PHOTO 01 */
+
+.photo-01 {
+    width: min(52vw, 720px);
+    height: min(65vh, 650px);
+    left: 12%;
+    top: 50%;
+
+    transform:
+        translateY(-50%) rotate(-2deg) scale(1.08);
+
+    transition:
+        opacity 2s ease,
+        transform 6s cubic-bezier(.16, .78, .25, 1);
+}
+
+.scene.active .photo-01 {
+    opacity: 1;
+
+    transform:
+        translateY(-50%) rotate(-2deg) scale(1);
+}
+
+/* PHOTO 02 */
+
+.photo-02 {
+    width: 30vw;
+    height: 45vh;
+    left: 19%;
+    top: 27%;
+
+    transform:
+        rotate(-4deg) scale(1.08);
+
+    transition:
+        opacity 2s 0.2s ease,
+        transform 6s cubic-bezier(.16, .78, .25, 1);
+}
+
+.scene.active .photo-02 {
+    opacity: 1;
+    transform:
+        rotate(-4deg) scale(1);
+}
+
+/* PHOTO 03 */
+
+.photo-03 {
+    width: 30vw;
+    height: 48vh;
+    right: 18%;
+    bottom: 20%;
+
+    transform:
+        rotate(4deg) scale(1.08);
+
+    transition:
+        opacity 2s 0.45s ease,
+        transform 6s 0.15s cubic-bezier(.16, .78, .25, 1);
+}
+
+.scene.active .photo-03 {
+    opacity: 1;
+    transform:
+        rotate(4deg) scale(1);
+}
+
+/* PHOTO CAPTION */
+
+.photo-caption {
+    position: absolute;
+    right: 11%;
+    bottom: 16%;
+    z-index: 3;
+    max-width: 290px;
+    opacity: 0;
+    transform: translateY(25px);
+    transition:
+        opacity 1.5s 0.8s ease,
+        transform 1.5s 0.8s ease;
+}
+
+.scene.active .photo-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo-caption span {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.45em;
+    color: rgba(255, 255, 255, 0.34);
+}
+
+.photo-caption p {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+/* FINAL */
+
+.final-message p {
+    margin: 8px 0;
+    font-size: clamp(15px, 1.7vw, 23px);
+    color: rgba(255, 255, 255, 0.46);
+}
+
+.final-message h2 {
+    margin-top: 50px;
+    font-size: clamp(40px, 5.8vw, 82px);
+}
+
+.scene-final h2 {
+    margin-top: 30px;
+}
+
+.scene-final p {
+    color: rgba(255, 255, 255, 0.42);
+}
+
+.scene-heart h2 {
+    text-shadow:
+        0 0 40px rgba(255, 50, 80, 0.18);
+}
+
+/* FILM INFO */
+
+.film-info {
+    position: fixed;
+    left: 24px;
+    right: 24px;
+    bottom: 8.5vh;
+    z-index: 70;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    pointer-events: none;
+
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.film-info .love-name {
+    max-width: 35vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.film-info .love-date {
+    color: rgba(255, 255, 255, 0.32);
+}
+
+/* PROGRESS */
+
+.film-progress {
+    position: fixed;
+    left: 50%;
+    bottom: 9.5vh;
+    width: 130px;
+    height: 1px;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 70;
+}
+
+.film-progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.58);
+    transition: width 0.3s linear;
+}
+
+/* START SCREEN */
+
+.start-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(95, 8, 28, 0.18),
+            transparent 45%),
+        #040404;
+
+    cursor: pointer;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+.start-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at center,
+            transparent 25%,
+            rgba(0, 0, 0, 0.62) 100%);
+    pointer-events: none;
+}
+
+.start-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.start-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+
+    transform: translateY(0);
+
+    transition:
+        transform 1.2s cubic-bezier(.22, 1, .36, 1),
+        opacity 1s ease;
+}
+
+.start-screen.hidden .start-content {
+    transform: translateY(-22px);
+    opacity: 0;
+}
+
+.start-label {
+    display: block;
+    margin-bottom: 28px;
+
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.48em;
+
+    color: rgba(255, 255, 255, 0.38);
+
+    animation: startLabel 2.8s ease-in-out infinite;
+}
+
+.start-content h1 {
+    margin: 0;
+
+    font-size: clamp(42px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.start-content h1 em {
+    color: rgba(255, 85, 108, 0.94);
+}
+
+.start-content p {
+    margin-top: 42px;
+
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.3);
+
+    animation: startHint 2.2s ease-in-out infinite;
+}
+
+.start-line {
+    width: 42px;
+    height: 1px;
+
+    margin: 22px auto 0;
+
+    background: rgba(255, 255, 255, 0.32);
+
+    transform-origin: center;
+
+    animation: startLine 2.2s ease-in-out infinite;
+}
+
+@keyframes startLabel {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes startHint {
+
+    0%,
+    100% {
+        opacity: 0.25;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes startLine {
+
+    0%,
+    100% {
+        transform: scaleX(0.45);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: scaleX(1);
+        opacity: 0.65;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+    .cinema-bar {
+        height: 5vh;
+    }
+
+    .film {
+        inset: 5vh 0;
+    }
+
+    .film-frame {
+        inset: 5vh 0;
+    }
+
+    .scene-center,
+    .scene-content {
+        width: 100%;
+        padding: 28px;
+    }
+
+    .scene h1 {
+        font-size: clamp(48px, 14vw, 72px);
+    }
+
+    .scene h2 {
+        font-size: clamp(38px, 11vw, 62px);
+    }
+
+    .scene p {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .eyebrow {
+        font-size: 8px;
+        letter-spacing: 0.34em;
+        margin-bottom: 22px;
+    }
+
+    .scene-02 {
+        display: block;
+        padding: 20vw 9vw;
+    }
+
+    .scene-left,
+    .scene-right {
+        width: 100%;
+    }
+
+    .scene-right {
+        padding-top: 45px;
+    }
+
+    .scene-02 .scene-right p {
+        font-size: 13px;
+        margin-bottom: 25px;
+    }
+
+    .scene-number {
+        margin-bottom: 22px;
+    }
+
+    .story-text {
+        max-width: 100%;
+    }
+
+    .story-text p {
+        margin-top: 17px;
+    }
+
+    .story-text h2 {
+        margin-top: 30px;
+    }
+
+    .photo-01 {
+        width: 76vw;
+        height: 57vh;
+        left: 7%;
+    }
+
+    .photo-02 {
+        width: 57vw;
+        height: 36vh;
+        left: 5%;
+        top: 20%;
+    }
+
+    .photo-03 {
+        width: 57vw;
+        height: 38vh;
+        right: 5%;
+        bottom: 15%;
+    }
+
+    .photo-caption {
+        right: 7%;
+        bottom: 9%;
+        max-width: 220px;
+    }
+
+    .photo-caption p {
+        font-size: 13px;
+    }
+
+    .film-info {
+        left: 14px;
+        right: 14px;
+        bottom: 6.5vh;
+        font-size: 7px;
+        letter-spacing: 0.2em;
+    }
+
+    .film-info .love-name {
+        max-width: 32vw;
+    }
+
+    .film-progress {
+        bottom: 7.5vh;
+        width: 90px;
+    }
+
+    .date {
+        top: 11%;
+        font-size: 8px;
+        letter-spacing: 0.42em;
+    }
+
+    .start-content {
+        width: 90%;
+    }
+
+    .start-content h1 {
+        font-size: clamp(38px, 11vw, 58px);
+    }
+
+    .start-label {
+        font-size: 8px;
+        letter-spacing: 0.32em;
+    }
+
+    .start-content p {
+        margin-top: 34px;
+        font-size: 8px;
+        letter-spacing: 0.22em;
+    }
+}
+
+/* VERY SMALL SCREEN */
+
+@media (max-width: 420px) {
+
+    .scene-center,
+    .scene-content {
+        padding: 22px;
+    }
+
+    .scene h2 {
+        font-size: 36px;
+    }
+
+    .scene p {
+        font-size: 13px;
+    }
+
+    .scene-02 {
+        padding: 18vw 8vw;
+    }
+
+    .photo-01 {
+        width: 80vw;
+        height: 54vh;
+        left: 5%;
+    }
+
+    .photo-caption {
+        right: 5%;
+        bottom: 8%;
+    }
+
+    .film-info {
+        font-size: 6px;
+    }
+}
+
+/* REDUCE MOTION */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
