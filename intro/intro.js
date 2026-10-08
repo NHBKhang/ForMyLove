@@ -4,31 +4,131 @@ const bgMusic = document.getElementById("bgMusic");
 const startScreen = document.getElementById("startScreen");
 
 const TIMELINE = [
-    { duration: 4800 },
+    // 01 — Opening
+    { duration: 5000 },
+
+    // 02 — Chúng ta là bạn
     { duration: 6500 },
+
+    // 03 — Những ngày cũ
+    { duration: 5200 },
+
+    // 04 — Kỷ niệm
+    { duration: 4800 },
+
+    // 05 — Mọi thứ khác đi
+    { duration: 4800 },
+
+    // 06 — Bắt đầu để ý
+    { duration: 5700 },
+
+    // 07 — Nghĩ rằng chỉ là tình bạn
+    { duration: 5700 },
+
+    // 08 — Người anh không dám hy vọng
+    { duration: 5200 },
+
+    // 09 — Bắt đầu nhớ
+    { duration: 5200 },
+
+    // 10 — Một ngày không nói chuyện
+    { duration: 5200 },
+
+    // 11 — Những điều nhỏ bé
+    { duration: 5900 },
+
+    // 12 — Em không còn là bạn
+    { duration: 5200 },
+
+    // 13 — Sợ nói ra
+    { duration: 5700 },
+
+    // 14 — Sợ mất em
+    { duration: 5000 },
+
+    // 15 — Không thể giả vờ
     { duration: 6000 },
+
+    // 16 — Bắt đầu nói về nhau
     { duration: 5200 },
-    { duration: 4800 },
-    { duration: 5200 },
-    { duration: 5200 },
-    { duration: 4800 },
+
+    // 17 — Những điều từng giấu
+    { duration: 6700 },
+
+    // 18 — Những điều em từng giấu
+    { duration: 5800 },
+
+    // 19 — Không còn khoảng cách
+    { duration: 6000 },
+
+    // 20 — Chúng ta đã khóc
+    { duration: 5100 },
+
+    // 21 — Cuối cùng cũng thật lòng
     { duration: 6500 },
+
+    // 22 — Không cần giấu cảm xúc
     { duration: 5200 },
+
+    // 23 — Chỉ cần ở bên nhau
+    { duration: 5800 },
+
+    // 24 — Anh đã thương em từ lâu
+    { duration: 6000 },
+
+    // 25 — Gọi tên cảm xúc
+    { duration: 5600 },
+
+    // 26 — Anh nói yêu em
     { duration: 6200 },
-    { duration: 5000 },
-    { duration: 5000 },
-    { duration: 5200 },
-    { duration: 6200 },
-    { duration: 5500 },
-    { duration: 5200 },
+
+    // 27 — Chờ câu trả lời
     { duration: 7000 },
-    { duration: 8000 },
-    { duration: 6500 },
-    { duration: 6200 },
-    { duration: 6200 },
+
+    // 28 — Em đồng ý ❤️
+    { duration: 7500 },
+
+    // 29 — Niềm vui
     { duration: 5000 },
-    { duration: 5500 },
-    { duration: 6000 }
+
+    // 30 — Em thật sự chọn anh
+    { duration: 6500 },
+
+    // 31 — Điều làm anh hạnh phúc
+    { duration: 6000 },
+
+    // 32 — Một người anh nghĩ không thể có
+    { duration: 6500 },
+
+    // 33 — Chính thức thành đôi
+    { duration: 5800 },
+
+    // 34 — Khoảng thời gian bên nhau
+    { duration: 6700 },
+
+    // 35 — Kỷ niệm cũ
+    { duration: 6500 },
+
+    // 36 — Những bức ảnh của chúng ta
+    { duration: 7200 },
+
+    // 37 — Ngày thay đổi mọi thứ
+    { duration: 6500 },
+
+    // 38 — Anh không đủ tốt
+    { duration: 6000 },
+
+    // 39 — Em ở bên anh
+    { duration: 6800 },
+
+    // 40 — Câu chuyện của chúng ta
+    { duration: 6500 },
+
+    // FINAL — Anh vẫn chọn em
+    { duration: 7500 },
+
+    // HEART — chuyển sang trái tim
+    { duration: 5200 }
 ];
 
 let currentScene = 0;
@@ -36,8 +136,8 @@ let sceneStart = performance.now();
 let musicStarted = false;
 let filmStarted = false;
 let heartTransitionStarted = false;
-const FRIENDSHIP_START_DATE = new Date(2022, 6, 5);
-const LOVE_START_DATE = new Date(2026, 4, 1);
+const FRIENDSHIP_START_DATE = new Date(2022, 2, 1);
+const LOVE_START_DATE = new Date(2026, 6, 5);
 
 function formatDate(date) {
     return `${String(date.getDate()).padStart(2, "0")}.${String(date.getMonth() + 1).padStart(2, "0")}.${date.getFullYear()}`;

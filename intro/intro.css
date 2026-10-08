@@ -1,4 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+
+:root {
+    --bg: #050305;
+    --bg-soft: #0c0508;
+
+
+    --red: #ff4263;
+    --red-soft: #ff7188;
+    --red-dark: #5f101f;
+
+    --white: rgba(255, 255, 255, 0.94);
+    --white-soft: rgba(255, 255, 255, 0.68);
+    --white-muted: rgba(255, 255, 255, 0.42);
+    --white-dim: rgba(255, 255, 255, 0.23);
+
+    --ease-cinema: cubic-bezier(.16, .78, .25, 1);
+    --ease-soft: cubic-bezier(.22, .61, .36, 1);
+
+
+}
+
+/* =========================================================
+RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -11,149 +35,262 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #050405;
+    background: var(--bg);
     color: #fff;
-    font-family: "Inter", "Segoe UI", Arial, sans-serif;
-}
 
-body {
+
+    font-family:
+        "DM Sans",
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+
+
 }
 
-/* BACKGROUND */
+button,
+a {
+    font: inherit;
+}
+
+/* =========================================================
+MAIN BACKGROUND
+========================================================= */
 
 .background {
     position: fixed;
     inset: 0;
     z-index: 0;
+
+
     background:
-        radial-gradient(circle at 50% 45%,
-            rgba(80, 12, 25, 0.42) 0%,
-            rgba(25, 8, 13, 0.55) 32%,
-            #070506 70%,
-            #030303 100%);
+        radial-gradient(circle at 50% 43%,
+            rgba(100, 12, 31, 0.25) 0%,
+            rgba(45, 8, 18, 0.17) 27%,
+            rgba(12, 5, 9, 0.9) 63%,
+            #020202 100%);
+
+    overflow: hidden;
+
+
+}
+
+.background::before {
+    content: "";
+
+
+    position: absolute;
+    inset: -20%;
+
+    background:
+        radial-gradient(circle at 18% 24%,
+            rgba(255, 54, 84, 0.07),
+            transparent 24%),
+        radial-gradient(circle at 82% 76%,
+            rgba(190, 35, 70, 0.065),
+            transparent 26%);
+
+    filter: blur(50px);
+
+    animation:
+        ambientMove 18s ease-in-out infinite alternate;
+
+
 }
 
 .background::after {
     content: "";
+
+
     position: absolute;
     inset: 0;
+
     background:
-        radial-gradient(circle at 20% 30%,
-            rgba(255, 55, 85, 0.04),
-            transparent 30%),
-        radial-gradient(circle at 80% 70%,
-            rgba(255, 30, 70, 0.035),
-            transparent 35%);
+        radial-gradient(ellipse at center,
+            transparent 15%,
+            rgba(0, 0, 0, 0.2) 65%,
+            rgba(0, 0, 0, 0.75) 100%);
+
+    pointer-events: none;
+
+
 }
 
-/* FILM GRAIN */
+@keyframes ambientMove {
+    0% {
+        transform: translate3d(-2%, -1%, 0) scale(1);
+    }
+
+
+    100% {
+        transform: translate3d(2%, 2%, 0) scale(1.08);
+    }
+
+
+}
+
+/* =========================================================
+FILM GRAIN
+========================================================= */
 
 .film-grain {
     position: fixed;
     inset: -50%;
+
+
     width: 200%;
     height: 200%;
-    z-index: 50;
+
+    z-index: 80;
     pointer-events: none;
-    opacity: 0.07;
+
+    opacity: 0.055;
+
     background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-    animation: grain 0.18s steps(2) infinite;
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.7'/%3E%3C/svg%3E");
+
+    animation: grainMove 0.2s steps(2) infinite;
+
+
 }
 
-@keyframes grain {
+@keyframes grainMove {
     0% {
         transform: translate(0, 0);
     }
 
-    20% {
-        transform: translate(-2%, 1%);
+
+    25% {
+        transform: translate(-1.5%, 1%);
     }
 
-    40% {
-        transform: translate(1%, -2%);
+    50% {
+        transform: translate(1%, -1.5%);
     }
 
-    60% {
-        transform: translate(2%, 2%);
-    }
-
-    80% {
-        transform: translate(-1%, -1%);
+    75% {
+        transform: translate(1.5%, 1%);
     }
 
     100% {
         transform: translate(0, 0);
     }
+
+
 }
 
-/* DUST */
+/* =========================================================
+FILM DUST
+========================================================= */
 
 .film-dust {
     position: fixed;
     inset: 0;
-    z-index: 45;
+
+
+    z-index: 75;
     pointer-events: none;
-    opacity: 0.18;
+
+    opacity: 0.13;
+
     background-image:
         radial-gradient(circle,
-            rgba(255, 255, 255, 0.5) 0 1px,
+            rgba(255, 255, 255, 0.55) 0 0.7px,
             transparent 1px);
-    background-size: 150px 150px;
-    animation: dustMove 20s linear infinite;
+
+    background-size: 170px 170px;
+
+    animation: dustFloat 25s linear infinite;
+
+
 }
 
-@keyframes dustMove {
+@keyframes dustFloat {
     from {
         background-position: 0 0;
     }
 
+
     to {
-        background-position: 150px 300px;
+        background-position: 170px 340px;
     }
+
+
 }
 
-/* VIGNETTE */
+/* =========================================================
+VIGNETTE
+========================================================= */
 
 .vignette {
     position: fixed;
     inset: 0;
-    z-index: 40;
+
+
+    z-index: 70;
     pointer-events: none;
+
     background:
         radial-gradient(ellipse at center,
-            transparent 28%,
-            rgba(0, 0, 0, 0.2) 58%,
-            rgba(0, 0, 0, 0.88) 100%);
+            transparent 30%,
+            rgba(0, 0, 0, 0.18) 58%,
+            rgba(0, 0, 0, 0.86) 100%);
+
+
 }
 
-/* LIGHT LEAK */
+/* =========================================================
+LIGHT LEAKS
+========================================================= */
 
 .light-leak {
     position: fixed;
-    width: 45vw;
-    height: 45vw;
+
+
+    width: 50vw;
+    height: 50vw;
+
     border-radius: 50%;
-    filter: blur(100px);
-    pointer-events: none;
+
+    filter: blur(120px);
+
     opacity: 0;
-    z-index: 4;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+
 }
 
 .light-leak-1 {
-    left: -18vw;
-    top: -15vw;
-    background: rgba(255, 35, 70, 0.13);
-    animation: leakOne 15s ease-in-out infinite;
+    left: -20vw;
+    top: -18vw;
+
+
+    background: rgba(255, 40, 75, 0.14);
+
+    animation:
+        leakOne 17s ease-in-out infinite;
+
+
 }
 
 .light-leak-2 {
-    right: -18vw;
-    bottom: -18vw;
-    background: rgba(170, 25, 65, 0.11);
-    animation: leakTwo 18s ease-in-out infinite;
+    right: -20vw;
+    bottom: -20vw;
+
+
+    background: rgba(180, 25, 65, 0.12);
+
+    animation:
+        leakTwo 20s ease-in-out infinite;
+
+
 }
 
 @keyframes leakOne {
@@ -161,18 +298,21 @@ body {
     0%,
     100% {
         opacity: 0;
-        transform: translate(0, 0);
+        transform: translate3d(0, 0, 0) scale(0.9);
     }
+
 
     35% {
         opacity: 0.8;
-        transform: translate(12vw, 8vh);
+        transform: translate3d(12vw, 9vh, 0) scale(1.05);
     }
 
-    65% {
-        opacity: 0.2;
-        transform: translate(20vw, 15vh);
+    70% {
+        opacity: 0.25;
+        transform: translate3d(20vw, 15vh, 0) scale(1.15);
     }
+
+
 }
 
 @keyframes leakTwo {
@@ -180,30 +320,43 @@ body {
     0%,
     100% {
         opacity: 0;
-        transform: translate(0, 0);
+        transform: translate3d(0, 0, 0);
     }
 
-    45% {
-        opacity: 0.6;
-        transform: translate(-10vw, -8vh);
+
+    40% {
+        opacity: 0.55;
+        transform: translate3d(-10vw, -8vh, 0);
     }
 
     70% {
-        opacity: 0;
-        transform: translate(-14vw, -10vh);
+        opacity: 0.1;
+        transform: translate3d(-15vw, -12vh, 0);
     }
+
+
 }
 
-/* CINEMA BARS */
+/* =========================================================
+CINEMA BARS
+========================================================= */
 
 .cinema-bar {
     position: fixed;
+
+
     left: 0;
     width: 100%;
+
     height: 7vh;
+
     background: #000;
-    z-index: 60;
+
+    z-index: 100;
+
     pointer-events: none;
+
+
 }
 
 .cinema-bar-top {
@@ -214,49 +367,85 @@ body {
     bottom: 0;
 }
 
-/* FILM FRAME */
+/* =========================================================
+FILM FRAME
+========================================================= */
 
 .film-frame {
     position: fixed;
+
+
     inset: 7vh 0;
-    z-index: 35;
+
+    z-index: 65;
+
     pointer-events: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.025);
-    border-right: 1px solid rgba(255, 255, 255, 0.025);
+
+    border-left:
+        1px solid rgba(255, 255, 255, 0.025);
+
+    border-right:
+        1px solid rgba(255, 255, 255, 0.025);
+
+
 }
 
 .film-frame::before,
 .film-frame::after {
     content: "";
+
+
     position: absolute;
-    left: 24px;
-    right: 24px;
+
+    left: 28px;
+    right: 28px;
+
     height: 1px;
-    background: rgba(255, 255, 255, 0.035);
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.06),
+            transparent);
+
+
 }
 
 .film-frame::before {
-    top: 24px;
+    top: 28px;
 }
 
 .film-frame::after {
-    bottom: 24px;
+    bottom: 28px;
 }
 
-/* FILM */
+/* =========================================================
+FILM CONTAINER
+========================================================= */
 
 .film {
     position: fixed;
+
+
     inset: 7vh 0;
+
     z-index: 10;
+
     overflow: hidden;
+
+    perspective: 1200px;
+
+
 }
 
-/* SCENES */
+/* =========================================================
+SCENES
+========================================================= */
 
 .scene {
     position: absolute;
     inset: 0;
+
 
     display: flex;
     align-items: center;
@@ -264,206 +453,395 @@ body {
 
     opacity: 0;
     visibility: hidden;
-    transform: scale(1.035);
+
+    transform:
+        scale(1.045) translate3d(0, 18px, 0);
+
+    filter: blur(2px);
 
     transition:
-        opacity 1.7s cubic-bezier(.22, .61, .36, 1),
-        transform 3.2s cubic-bezier(.16, .78, .25, 1),
-        visibility 0s linear 1.7s;
+        opacity 1.65s var(--ease-soft),
+        transform 4.5s var(--ease-cinema),
+        filter 1.8s ease,
+        visibility 0s linear 1.65s;
 
     overflow: hidden;
+
+
 }
 
 .scene.active {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
+
+
+    transform:
+        scale(1) translate3d(0, 0, 0);
+
+    filter: blur(0);
 
     transition:
-        opacity 1.8s cubic-bezier(.22, .61, .36, 1),
-        transform 7s cubic-bezier(.16, .78, .25, 1),
+        opacity 1.8s var(--ease-soft),
+        transform 7s var(--ease-cinema),
+        filter 2s ease,
         visibility 0s;
 
     z-index: 2;
+
+
+}
+
+/* subtle scene glow */
+
+.scene::before {
+    content: "";
+
+
+    position: absolute;
+    inset: -20%;
+
+    background:
+        radial-gradient(circle at 50% 48%,
+            rgba(255, 45, 75, 0.045),
+            transparent 35%);
+
+    pointer-events: none;
+
+    opacity: 0.7;
+
+    animation:
+        sceneGlow 9s ease-in-out infinite alternate;
+
+
+}
+
+@keyframes sceneGlow {
+    from {
+        transform: scale(0.95);
+        opacity: 0.35;
+    }
+
+
+    to {
+        transform: scale(1.08);
+        opacity: 0.7;
+    }
+
+
 }
 
 .scene::after {
     content: "";
+
+
     position: absolute;
     inset: 0;
+
     pointer-events: none;
+
     background:
         radial-gradient(circle at center,
             transparent 30%,
-            rgba(0, 0, 0, 0.16) 100%);
+            rgba(0, 0, 0, 0.14) 100%);
+
+
 }
+
+/* =========================================================
+CONTENT
+========================================================= */
 
 .scene-center,
 .scene-content {
     position: relative;
-    z-index: 2;
-    width: min(100% - 60px, 1000px);
+
+
+    z-index: 3;
+
+    width: min(100% - 60px, 1080px);
+
     padding: 40px;
+
     text-align: center;
+
+
 }
 
-/* TYPOGRAPHY */
+/* =========================================================
+TYPOGRAPHY
+========================================================= */
 
 .eyebrow {
     display: block;
-    margin-bottom: 28px;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.5em;
+
+
+    margin-bottom: 30px;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 0.52em;
+
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.42);
+
+    color:
+        rgba(255, 255, 255, 0.38);
+
+
 }
 
 .scene h1,
 .scene h2 {
     font-weight: 300;
-    letter-spacing: -0.045em;
-    line-height: 0.98;
+
+
+    letter-spacing: -0.055em;
+
+    line-height: 0.95;
+
+    color: var(--white);
+
+    text-wrap: balance;
+
+
 }
 
 .scene h1 {
-    font-size: clamp(58px, 9vw, 145px);
+    font-size:
+        clamp(58px, 9vw, 145px);
 }
 
 .scene h2 {
-    font-size: clamp(42px, 6.8vw, 105px);
+    font-size:
+        clamp(42px, 6.8vw, 105px);
 }
 
 .scene p {
-    margin-top: 24px;
-    font-size: clamp(14px, 1.35vw, 19px);
-    line-height: 1.85;
+    margin-top: 26px;
+
+
+    font-size:
+        clamp(14px, 1.25vw, 18px);
+
+    line-height: 1.9;
+
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.54);
+
+    color:
+        var(--white-muted);
+
+    text-wrap: balance;
+
+
 }
 
-/* ELEGANT ITALIC */
+/* =========================================================
+PLAYFAIR
+========================================================= */
 
 .scene h2 em,
 .start-content h1 em {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+
     font-style: italic;
+
     font-weight: 400;
-    letter-spacing: -0.035em;
-    color: rgba(255, 82, 105, 0.95);
-    text-shadow: 0 0 35px rgba(255, 45, 75, 0.14);
+
+    letter-spacing: -0.04em;
+
+    color: var(--red-soft);
+
+    text-shadow:
+        0 0 30px rgba(255, 45, 75, 0.16),
+        0 0 80px rgba(255, 45, 75, 0.06);
+
+
 }
 
-/* SCENE 01 */
+/* =========================================================
+SCENE 01
+========================================================= */
 
 .scene-01 {
     background:
         radial-gradient(circle at center,
-            rgba(100, 10, 30, 0.13),
-            transparent 58%);
+            rgba(105, 10, 32, 0.12),
+            transparent 60%);
 }
 
 .scene-01 h1 {
-    animation: titleReveal 2.2s both;
+    animation:
+        titleReveal 2.4s var(--ease-cinema) both;
 }
 
 .scene-01 p {
-    animation: subtitleReveal 2.8s 0.55s both;
+    animation:
+        subtitleReveal 2.7s 0.55s var(--ease-cinema) both;
 }
 
 @keyframes titleReveal {
     from {
         opacity: 0;
-        transform: translateY(35px);
-        filter: blur(12px);
+
+
+        transform:
+            translateY(42px) scale(0.97);
+
+        filter: blur(14px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0) scale(1);
+
         filter: blur(0);
     }
+
+
 }
 
 @keyframes subtitleReveal {
     from {
         opacity: 0;
-        transform: translateY(15px);
+
+
+        transform:
+            translateY(18px);
+
+        filter: blur(5px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
+        filter: blur(0);
     }
+
+
 }
 
-/* SCENE 02 */
+/* =========================================================
+SCENE 02
+========================================================= */
 
 .scene-02 {
     justify-content: space-between;
-    padding: 8vw 11vw;
+
+
+    padding:
+        8vw 11vw;
+
+
 }
 
 .scene-left {
     position: relative;
-    z-index: 2;
+
+
+    z-index: 3;
+
     width: 52%;
+
     text-align: left;
+
+
 }
 
 .scene-right {
     position: relative;
-    z-index: 2;
-    width: 32%;
-    padding-top: 60px;
+
+
+    z-index: 3;
+
+    width: 31%;
+
+    padding-top: 70px;
+
+
 }
 
 .scene-number {
     display: block;
+
+
     margin-bottom: 28px;
-    font-size: 10px;
-    letter-spacing: 0.45em;
-    color: rgba(255, 255, 255, 0.3);
+
+    font-size: 11px;
+
+    letter-spacing: 0.48em;
+
+    color:
+        rgba(255, 255, 255, 0.25);
+
+
 }
 
 .scene-02 .scene-left h2 {
-    font-size: clamp(46px, 6.5vw, 100px);
+    font-size:
+        clamp(46px, 6.5vw, 100px);
 }
 
 .scene-02 .scene-right p {
     margin-top: 0;
-    margin-bottom: 30px;
-    font-size: clamp(14px, 1.25vw, 18px);
+
+
+    margin-bottom: 32px;
+
+    font-size:
+        clamp(14px, 1.2vw, 17px);
+
+    color:
+        rgba(255, 255, 255, 0.48);
+
+
 }
 
-/* DYNAMIC DATES */
+/* =========================================================
+DYNAMIC TEXT
+========================================================= */
 
 .friendship-date,
-.love-date {
-    font-variant-numeric: tabular-nums;
-}
-
+.love-date,
 .friendship-duration,
 .love-duration {
     font-variant-numeric: tabular-nums;
 }
 
-/* HIGHLIGHT */
-
 .friendship-duration {
-    color: rgba(255, 255, 255, 0.95);
+    color:
+        rgba(255, 255, 255, 0.95);
 }
 
 .love-duration {
-    color: rgba(255, 255, 255, 0.96);
+    color:
+        rgba(255, 255, 255, 0.96);
 }
 
 .scene-02 .friendship-duration {
-    color: rgba(255, 95, 115, 0.92);
+    color:
+        rgba(255, 95, 115, 0.92);
+
+
     font-weight: 400;
+
+    text-shadow:
+        0 0 25px rgba(255, 60, 90, 0.1);
+
+
 }
 
-/* STORY TEXT */
+/* =========================================================
+STORY TEXT
+========================================================= */
 
 .story-text {
     max-width: 920px;
@@ -478,26 +856,35 @@ body {
 }
 
 .story-text h2 {
-    margin-top: 38px;
+    margin-top: 40px;
 }
 
-/* SMALL TEXT */
+/* =========================================================
+SMALL TEXT
+========================================================= */
 
 .small-text,
 .change-text {
     display: block;
-    font-size: 10px !important;
-    font-weight: 400;
-    letter-spacing: 0.35em;
+
+
+    font-size: 11px !important;
+
+    font-weight: 500;
+
+    letter-spacing: 0.38em;
+
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.34);
+
+    color:
+        rgba(255, 255, 255, 0.3);
+
+
 }
 
-.scene-05 h2 {
-    margin-top: 26px;
-}
-
-/* SCENE ACCENTS */
+/* =========================================================
+RED ACCENT SCENES
+========================================================= */
 
 .scene-08,
 .scene-14,
@@ -506,90 +893,166 @@ body {
 .scene-heart {
     background:
         radial-gradient(circle at center,
-            rgba(105, 8, 30, 0.17),
-            transparent 58%);
-}
-
-.scene-14 .love-date {
-    color: rgba(255, 255, 255, 0.38);
+            rgba(120, 8, 34, 0.17),
+            rgba(35, 5, 13, 0.08) 35%,
+            transparent 67%);
 }
 
 .scene-14 h2 {
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
 .scene-14 h2 em {
     display: inline-block;
-    margin-top: 6px;
-    color: rgba(255, 80, 105, 0.98);
+
+
+    margin-top: 7px;
+
+    color:
+        rgba(255, 83, 107, 0.98);
+
+
 }
 
-/* DATE */
+/* =========================================================
+DATE
+========================================================= */
 
 .date {
     position: absolute;
+
+
     top: 13%;
     left: 50%;
-    z-index: 2;
-    transform: translateX(-50%);
+
+    z-index: 4;
+
+    transform:
+        translateX(-50%);
+
     font-size: 10px;
-    letter-spacing: 0.55em;
-    color: rgba(255, 255, 255, 0.34);
+
+    letter-spacing: 0.6em;
+
+    color:
+        rgba(255, 255, 255, 0.28);
+
     white-space: nowrap;
+
+
 }
 
-/* PHOTOS */
+/* =========================================================
+PHOTOS
+========================================================= */
 
 .photo {
     position: absolute;
+
+
     overflow: hidden;
-    background: #100c0e;
+
+    background: #10090c;
+
     box-shadow:
-        0 30px 100px rgba(0, 0, 0, 0.58),
+        0 35px 110px rgba(0, 0, 0, 0.65),
         0 0 0 1px rgba(255, 255, 255, 0.035);
 
     opacity: 0;
+
+    will-change: transform, opacity;
+
+
+}
+
+.photo::before {
+    content: "";
+
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(120deg,
+            rgba(255, 255, 255, 0.05),
+            transparent 30%,
+            transparent 70%,
+            rgba(255, 40, 70, 0.05));
+
+    mix-blend-mode: screen;
+
+
 }
 
 .photo::after {
     content: "";
+
+
     position: absolute;
     inset: 0;
+
+    z-index: 3;
+
     pointer-events: none;
+
     background:
         linear-gradient(180deg,
-            rgba(0, 0, 0, 0.05),
-            transparent 45%,
-            rgba(0, 0, 0, 0.28));
+            rgba(0, 0, 0, 0.04),
+            transparent 42%,
+            rgba(0, 0, 0, 0.36));
+
+
 }
 
 .photo img {
     display: block;
+
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
 
     filter:
-        saturate(0.78) contrast(1.04) brightness(0.76);
+        saturate(0.72) contrast(1.06) brightness(0.72);
 
-    transform: scale(1.08);
+    transform:
+        scale(1.12);
 
     transition:
-        transform 10s cubic-bezier(.16, .78, .25, 1),
-        filter 3s ease;
+        transform 11s var(--ease-cinema),
+        filter 3.5s ease;
+
+
 }
 
 .scene.active .photo img {
-    transform: scale(1);
+    transform:
+        scale(1);
+
+
     filter:
-        saturate(0.9) contrast(1.04) brightness(0.82);
+        saturate(0.91) contrast(1.05) brightness(0.83);
+
+
 }
 
-/* PHOTO 01 */
+/* =========================================================
+PHOTO 01
+========================================================= */
 
 .photo-01 {
-    width: min(52vw, 720px);
-    height: min(65vh, 650px);
+    width:
+        min(52vw, 720px);
+
+
+    height:
+        min(65vh, 650px);
+
     left: 12%;
     top: 50%;
 
@@ -598,21 +1061,30 @@ body {
 
     transition:
         opacity 2s ease,
-        transform 6s cubic-bezier(.16, .78, .25, 1);
+        transform 6s var(--ease-cinema);
+
+
 }
 
 .scene.active .photo-01 {
     opacity: 1;
 
+
     transform:
         translateY(-50%) rotate(-2deg) scale(1);
+
+
 }
 
-/* PHOTO 02 */
+/* =========================================================
+PHOTO 02
+========================================================= */
 
 .photo-02 {
     width: 30vw;
     height: 45vh;
+
+
     left: 19%;
     top: 27%;
 
@@ -621,20 +1093,30 @@ body {
 
     transition:
         opacity 2s 0.2s ease,
-        transform 6s cubic-bezier(.16, .78, .25, 1);
+        transform 6s var(--ease-cinema);
+
+
 }
 
 .scene.active .photo-02 {
     opacity: 1;
+
+
     transform:
         rotate(-4deg) scale(1);
+
+
 }
 
-/* PHOTO 03 */
+/* =========================================================
+PHOTO 03
+========================================================= */
 
 .photo-03 {
     width: 30vw;
     height: 48vh;
+
+
     right: 18%;
     bottom: 20%;
 
@@ -643,134 +1125,269 @@ body {
 
     transition:
         opacity 2s 0.45s ease,
-        transform 6s 0.15s cubic-bezier(.16, .78, .25, 1);
+        transform 6s 0.15s var(--ease-cinema);
+
+
 }
 
 .scene.active .photo-03 {
     opacity: 1;
+
+
     transform:
         rotate(4deg) scale(1);
+
+
 }
 
-/* PHOTO CAPTION */
+/* =========================================================
+PHOTO CAPTION
+========================================================= */
 
 .photo-caption {
     position: absolute;
+
+
     right: 11%;
     bottom: 16%;
-    z-index: 3;
+
+    z-index: 5;
+
     max-width: 290px;
+
     opacity: 0;
-    transform: translateY(25px);
+
+    transform:
+        translateY(25px);
+
     transition:
         opacity 1.5s 0.8s ease,
-        transform 1.5s 0.8s ease;
+        transform 1.5s 0.8s var(--ease-cinema);
+
+
 }
 
 .scene.active .photo-caption {
     opacity: 1;
-    transform: translateY(0);
+
+
+    transform:
+        translateY(0);
+
+
 }
 
 .photo-caption span {
     display: block;
+
+
     font-size: 9px;
-    letter-spacing: 0.45em;
-    color: rgba(255, 255, 255, 0.34);
+
+    letter-spacing: 0.5em;
+
+    color:
+        rgba(255, 255, 255, 0.3);
+
+
 }
 
 .photo-caption p {
     margin-top: 12px;
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.62);
+
+
+    font-size: 14px;
+
+    line-height: 1.75;
+
+    color:
+        rgba(255, 255, 255, 0.62);
+
+
 }
 
-/* FINAL */
+/* =========================================================
+FINAL MESSAGE
+========================================================= */
 
 .final-message p {
-    margin: 8px 0;
-    font-size: clamp(15px, 1.7vw, 23px);
-    color: rgba(255, 255, 255, 0.46);
+    margin: 10px 0;
+
+
+    font-size:
+        clamp(15px, 1.7vw, 23px);
+
+    color:
+        rgba(255, 255, 255, 0.43);
+
+
 }
 
 .final-message h2 {
     margin-top: 50px;
-    font-size: clamp(40px, 5.8vw, 82px);
+
+
+    font-size:
+        clamp(40px, 5.8vw, 82px);
+
+
 }
 
 .scene-final h2 {
-    margin-top: 30px;
+    margin-top: 32px;
 }
 
 .scene-final p {
-    color: rgba(255, 255, 255, 0.42);
+    color:
+        rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================================
+HEART SCENE
+========================================================= */
+
+.scene-heart::before {
+    background:
+        radial-gradient(circle at center,
+            rgba(255, 30, 65, 0.1),
+            transparent 38%);
+
+
+    animation:
+        heartSceneGlow 4s ease-in-out infinite alternate;
+
+
+}
+
+@keyframes heartSceneGlow {
+    from {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+
+
+    to {
+        transform: scale(1.18);
+        opacity: 0.9;
+    }
+
+
 }
 
 .scene-heart h2 {
     text-shadow:
-        0 0 40px rgba(255, 50, 80, 0.18);
+        0 0 35px rgba(255, 50, 80, 0.18),
+        0 0 100px rgba(255, 30, 60, 0.06);
 }
 
-/* FILM INFO */
+/* =========================================================
+FILM INFO
+========================================================= */
 
 .film-info {
     position: fixed;
-    left: 24px;
-    right: 24px;
+
+
+    left: 26px;
+    right: 26px;
+
     bottom: 8.5vh;
-    z-index: 70;
+
+    z-index: 120;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
+
     gap: 20px;
 
     pointer-events: none;
 
-    font-size: 8px;
-    font-weight: 400;
-    letter-spacing: 0.28em;
-    color: rgba(255, 255, 255, 0.25);
+    font-size: 7px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.3em;
+
+    color:
+        rgba(255, 255, 255, 0.22);
+
+
 }
 
 .film-info .love-name {
     max-width: 35vw;
+
+
     overflow: hidden;
+
     text-overflow: ellipsis;
+
     white-space: nowrap;
+
+
 }
 
 .film-info .love-date {
-    color: rgba(255, 255, 255, 0.32);
+    color:
+        rgba(255, 255, 255, 0.32);
 }
 
-/* PROGRESS */
+/* =========================================================
+PROGRESS
+========================================================= */
 
 .film-progress {
     position: fixed;
+
+
     left: 50%;
     bottom: 9.5vh;
-    width: 130px;
+
+    width: 150px;
     height: 1px;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.08);
-    z-index: 70;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 120;
+
+
 }
 
 .film-progress span {
     display: block;
+
+
     width: 0;
     height: 100%;
-    background: rgba(255, 255, 255, 0.58);
-    transition: width 0.3s linear;
+
+    background:
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.2),
+            rgba(255, 100, 120, 0.75));
+
+    box-shadow:
+        0 0 8px rgba(255, 60, 90, 0.25);
+
+    transition:
+        width 0.35s linear;
+
+
 }
 
-/* START SCREEN */
+/* =========================================================
+START SCREEN
+========================================================= */
 
 .start-screen {
     position: fixed;
     inset: 0;
+
+
     z-index: 9999;
 
     display: flex;
@@ -778,10 +1395,13 @@ body {
     justify-content: center;
 
     background:
-        radial-gradient(circle at 50% 45%,
-            rgba(95, 8, 28, 0.18),
-            transparent 45%),
-        #040404;
+        radial-gradient(circle at 50% 44%,
+            rgba(100, 8, 30, 0.19),
+            transparent 42%),
+        radial-gradient(circle at center,
+            rgba(255, 255, 255, 0.015),
+            transparent 55%),
+        #030303;
 
     cursor: pointer;
 
@@ -789,122 +1409,294 @@ body {
     visibility: visible;
 
     transition:
-        opacity 1.5s ease,
-        visibility 1.5s ease;
+        opacity 1.8s var(--ease-soft),
+        visibility 1.8s;
+
+
 }
 
 .start-screen::before {
     content: "";
+
+
     position: absolute;
     inset: 0;
+
     background:
-        radial-gradient(circle at center,
-            transparent 25%,
-            rgba(0, 0, 0, 0.62) 100%);
+        radial-gradient(ellipse at center,
+            transparent 22%,
+            rgba(0, 0, 0, 0.75) 100%);
+
     pointer-events: none;
+
+
+}
+
+.start-screen::after {
+    content: "";
+
+
+    position: absolute;
+
+    width: 55vw;
+    height: 55vw;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(255, 40, 70, 0.045),
+            transparent 68%);
+
+    filter: blur(40px);
+
+    animation:
+        startGlow 5s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+
+}
+
+@keyframes startGlow {
+    from {
+        transform: scale(0.85);
+        opacity: 0.3;
+    }
+
+
+    to {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+
 }
 
 .start-screen.hidden {
     opacity: 0;
     visibility: hidden;
+
+
     pointer-events: none;
+
+
 }
 
 .start-content {
     position: relative;
+
+
     z-index: 2;
+
+    width: min(90%, 900px);
+
     text-align: center;
 
-    transform: translateY(0);
+    transform:
+        translateY(0);
 
     transition:
-        transform 1.2s cubic-bezier(.22, 1, .36, 1),
-        opacity 1s ease;
+        transform 1.4s var(--ease-cinema),
+        opacity 1.2s ease;
+
+
 }
 
 .start-screen.hidden .start-content {
-    transform: translateY(-22px);
+    transform:
+        translateY(-35px) scale(0.98);
+
+
     opacity: 0;
+
+
 }
+
+/* =========================================================
+START LABEL
+========================================================= */
 
 .start-label {
     display: block;
-    margin-bottom: 28px;
 
-    font-size: 9px;
+
+    margin-bottom: 30px;
+
+    font-size: 10px;
+
     font-weight: 500;
-    letter-spacing: 0.48em;
 
-    color: rgba(255, 255, 255, 0.38);
+    letter-spacing: 0.52em;
 
-    animation: startLabel 2.8s ease-in-out infinite;
-}
+    color:
+        rgba(255, 255, 255, 0.34);
 
-.start-content h1 {
-    margin: 0;
+    animation:
+        startLabel 3s ease-in-out infinite;
 
-    font-size: clamp(42px, 7vw, 88px);
-    font-weight: 300;
-    line-height: 0.95;
-    letter-spacing: -0.045em;
 
-    color: rgba(255, 255, 255, 0.94);
-}
-
-.start-content h1 em {
-    color: rgba(255, 85, 108, 0.94);
-}
-
-.start-content p {
-    margin-top: 42px;
-
-    font-size: 9px;
-    font-weight: 400;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-
-    color: rgba(255, 255, 255, 0.3);
-
-    animation: startHint 2.2s ease-in-out infinite;
-}
-
-.start-line {
-    width: 42px;
-    height: 1px;
-
-    margin: 22px auto 0;
-
-    background: rgba(255, 255, 255, 0.32);
-
-    transform-origin: center;
-
-    animation: startLine 2.2s ease-in-out infinite;
 }
 
 @keyframes startLabel {
 
     0%,
     100% {
-        opacity: 0.3;
+        opacity: 0.28;
     }
 
+
     50% {
-        opacity: 0.7;
+        opacity: 0.72;
     }
+
+
+}
+
+/* =========================================================
+START TITLE
+========================================================= */
+
+.start-content h1 {
+    margin: 0;
+
+
+    font-size:
+        clamp(42px, 7vw, 88px);
+
+    font-weight: 300;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+
+    color:
+        rgba(255, 255, 255, 0.95);
+
+    animation:
+        startTitleIn 1.8s var(--ease-cinema) both;
+
+
+}
+
+.start-content h1 em {
+    color:
+        var(--red-soft);
+}
+
+@keyframes startTitleIn {
+    from {
+        opacity: 0;
+
+
+        transform:
+            translateY(25px);
+
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter: blur(0);
+    }
+
+
+}
+
+/* =========================================================
+START HINT
+========================================================= */
+
+.start-content p {
+    margin-top: 44px;
+
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.32em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(255, 255, 255, 0.25);
+
+    animation:
+        startHint 2.5s ease-in-out infinite;
+
+
 }
 
 @keyframes startHint {
 
     0%,
     100% {
-        opacity: 0.25;
+        opacity: 0.22;
         transform: translateY(0);
     }
 
+
     50% {
-        opacity: 0.7;
+        opacity: 0.65;
         transform: translateY(-3px);
     }
+
+
+}
+
+/* =========================================================
+START LINE
+========================================================= */
+
+.start-line {
+    position: relative;
+
+
+    width: 55px;
+    height: 1px;
+
+    margin: 23px auto 0;
+
+    background:
+        rgba(255, 255, 255, 0.3);
+
+    transform-origin: center;
+
+    animation:
+        startLine 2.4s ease-in-out infinite;
+
+
+}
+
+.start-line::after {
+    content: "";
+
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background:
+        var(--red);
+
+    transform:
+        translate(-50%, -50%);
+
+    box-shadow:
+        0 0 10px rgba(255, 50, 80, 0.45);
+
+
 }
 
 @keyframes startLine {
@@ -912,18 +1704,27 @@ body {
     0%,
     100% {
         transform: scaleX(0.45);
+
+
         opacity: 0.2;
     }
 
     50% {
         transform: scaleX(1);
-        opacity: 0.65;
+
+        opacity: 0.7;
     }
+
+
 }
 
-/* MOBILE */
+/* =========================================================
+MOBILE
+========================================================= */
 
 @media (max-width: 700px) {
+
+
     .cinema-bar {
         height: 5vh;
     }
@@ -936,34 +1737,52 @@ body {
         inset: 5vh 0;
     }
 
+    .film-frame::before,
+    .film-frame::after {
+        left: 16px;
+        right: 16px;
+    }
+
+
     .scene-center,
     .scene-content {
         width: 100%;
         padding: 28px;
     }
 
+
     .scene h1 {
-        font-size: clamp(48px, 14vw, 72px);
+        font-size:
+            clamp(48px, 14vw, 72px);
     }
 
     .scene h2 {
-        font-size: clamp(38px, 11vw, 62px);
+        font-size:
+            clamp(38px, 11vw, 62px);
     }
 
     .scene p {
         font-size: 14px;
-        line-height: 1.75;
+        line-height: 1.8;
     }
 
+
     .eyebrow {
-        font-size: 8px;
-        letter-spacing: 0.34em;
+        font-size: 7px;
+
+        letter-spacing: 0.36em;
+
         margin-bottom: 22px;
     }
 
+
+    /* SCENE 02 */
+
     .scene-02 {
         display: block;
-        padding: 20vw 9vw;
+
+        padding:
+            20vw 9vw;
     }
 
     .scene-left,
@@ -977,12 +1796,16 @@ body {
 
     .scene-02 .scene-right p {
         font-size: 13px;
+
         margin-bottom: 25px;
     }
 
     .scene-number {
         margin-bottom: 22px;
     }
+
+
+    /* STORY */
 
     .story-text {
         max-width: 100%;
@@ -996,15 +1819,20 @@ body {
         margin-top: 30px;
     }
 
+
+    /* PHOTOS */
+
     .photo-01 {
         width: 76vw;
         height: 57vh;
+
         left: 7%;
     }
 
     .photo-02 {
         width: 57vw;
         height: 36vh;
+
         left: 5%;
         top: 20%;
     }
@@ -1012,13 +1840,16 @@ body {
     .photo-03 {
         width: 57vw;
         height: 38vh;
+
         right: 5%;
         bottom: 15%;
     }
 
+
     .photo-caption {
         right: 7%;
         bottom: 9%;
+
         max-width: 220px;
     }
 
@@ -1026,11 +1857,17 @@ body {
         font-size: 13px;
     }
 
+
+    /* INFO */
+
     .film-info {
         left: 14px;
         right: 14px;
+
         bottom: 6.5vh;
-        font-size: 7px;
+
+        font-size: 6px;
+
         letter-spacing: 0.2em;
     }
 
@@ -1038,40 +1875,61 @@ body {
         max-width: 32vw;
     }
 
+
     .film-progress {
         bottom: 7.5vh;
+
         width: 90px;
     }
 
+
     .date {
         top: 11%;
-        font-size: 8px;
-        letter-spacing: 0.42em;
+
+        font-size: 7px;
+
+        letter-spacing: 0.45em;
     }
+
+
+    /* START */
 
     .start-content {
         width: 90%;
     }
 
     .start-content h1 {
-        font-size: clamp(38px, 11vw, 58px);
+        font-size:
+            clamp(38px, 11vw, 58px);
     }
 
     .start-label {
-        font-size: 8px;
-        letter-spacing: 0.32em;
+        font-size: 7px;
+
+        letter-spacing: 0.34em;
     }
 
     .start-content p {
         margin-top: 34px;
-        font-size: 8px;
-        letter-spacing: 0.22em;
+
+        font-size: 7px;
+
+        letter-spacing: 0.24em;
     }
+
+    .start-line {
+        width: 44px;
+    }
+
+
 }
 
-/* VERY SMALL SCREEN */
+/* =========================================================
+VERY SMALL DEVICES
+========================================================= */
 
 @media (max-width: 420px) {
+
 
     .scene-center,
     .scene-content {
@@ -1087,12 +1945,14 @@ body {
     }
 
     .scene-02 {
-        padding: 18vw 8vw;
+        padding:
+            18vw 8vw;
     }
 
     .photo-01 {
         width: 80vw;
         height: 54vh;
+
         left: 5%;
     }
 
@@ -1102,11 +1962,15 @@ body {
     }
 
     .film-info {
-        font-size: 6px;
+        font-size: 5.5px;
     }
+
 }
 
-/* REDUCE MOTION */
+/* =========================================================
+REDUCE MOTION
+========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -1114,6 +1978,8 @@ body {
     *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+
         transition-duration: 0.01ms !important;
     }
+
 }
