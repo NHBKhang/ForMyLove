@@ -16,14 +16,11 @@
 
     --ease-cinema: cubic-bezier(.16, .78, .25, 1);
     --ease-soft: cubic-bezier(.22, .61, .36, 1);
-
-
 }
 
 /* =========================================================
 RESET
 ========================================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -38,7 +35,6 @@ body {
     background: var(--bg);
     color: #fff;
 
-
     font-family:
         "DM Sans",
         Inter,
@@ -48,8 +44,6 @@ body {
 
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-
-
 }
 
 button,
@@ -60,12 +54,10 @@ a {
 /* =========================================================
 MAIN BACKGROUND
 ========================================================= */
-
 .background {
     position: fixed;
     inset: 0;
     z-index: 0;
-
 
     background:
         radial-gradient(circle at 50% 43%,
@@ -75,13 +67,10 @@ MAIN BACKGROUND
             #020202 100%);
 
     overflow: hidden;
-
-
 }
 
 .background::before {
     content: "";
-
 
     position: absolute;
     inset: -20%;
@@ -98,13 +87,10 @@ MAIN BACKGROUND
 
     animation:
         ambientMove 18s ease-in-out infinite alternate;
-
-
 }
 
 .background::after {
     content: "";
-
 
     position: absolute;
     inset: 0;
@@ -125,22 +111,17 @@ MAIN BACKGROUND
         transform: translate3d(-2%, -1%, 0) scale(1);
     }
 
-
     100% {
         transform: translate3d(2%, 2%, 0) scale(1.08);
     }
-
-
 }
 
 /* =========================================================
 FILM GRAIN
 ========================================================= */
-
 .film-grain {
     position: fixed;
     inset: -50%;
-
 
     width: 200%;
     height: 200%;
@@ -154,15 +135,12 @@ FILM GRAIN
         url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.7'/%3E%3C/svg%3E");
 
     animation: grainMove 0.2s steps(2) infinite;
-
-
 }
 
 @keyframes grainMove {
     0% {
         transform: translate(0, 0);
     }
-
 
     25% {
         transform: translate(-1.5%, 1%);
@@ -179,18 +157,14 @@ FILM GRAIN
     100% {
         transform: translate(0, 0);
     }
-
-
 }
 
 /* =========================================================
 FILM DUST
 ========================================================= */
-
 .film-dust {
     position: fixed;
     inset: 0;
-
 
     z-index: 75;
     pointer-events: none;
@@ -205,8 +179,6 @@ FILM DUST
     background-size: 170px 170px;
 
     animation: dustFloat 25s linear infinite;
-
-
 }
 
 @keyframes dustFloat {
@@ -214,22 +186,17 @@ FILM DUST
         background-position: 0 0;
     }
 
-
     to {
         background-position: 170px 340px;
     }
-
-
 }
 
 /* =========================================================
 VIGNETTE
 ========================================================= */
-
 .vignette {
     position: fixed;
     inset: 0;
-
 
     z-index: 70;
     pointer-events: none;
@@ -239,17 +206,13 @@ VIGNETTE
             transparent 30%,
             rgba(0, 0, 0, 0.18) 58%,
             rgba(0, 0, 0, 0.86) 100%);
-
-
 }
 
 /* =========================================================
 LIGHT LEAKS
 ========================================================= */
-
 .light-leak {
     position: fixed;
-
 
     width: 50vw;
     height: 50vw;
@@ -263,44 +226,32 @@ LIGHT LEAKS
     pointer-events: none;
 
     z-index: 5;
-
-
 }
 
 .light-leak-1 {
     left: -20vw;
     top: -18vw;
 
-
     background: rgba(255, 40, 75, 0.14);
 
-    animation:
-        leakOne 17s ease-in-out infinite;
-
-
+    animation: leakOne 17s ease-in-out infinite;
 }
 
 .light-leak-2 {
     right: -20vw;
     bottom: -20vw;
 
-
     background: rgba(180, 25, 65, 0.12);
 
-    animation:
-        leakTwo 20s ease-in-out infinite;
-
-
+    animation: leakTwo 20s ease-in-out infinite;
 }
 
 @keyframes leakOne {
-
     0%,
     100% {
         opacity: 0;
         transform: translate3d(0, 0, 0) scale(0.9);
     }
-
 
     35% {
         opacity: 0.8;
@@ -311,12 +262,9 @@ LIGHT LEAKS
         opacity: 0.25;
         transform: translate3d(20vw, 15vh, 0) scale(1.15);
     }
-
-
 }
 
 @keyframes leakTwo {
-
     0%,
     100% {
         opacity: 0;
@@ -333,17 +281,13 @@ LIGHT LEAKS
         opacity: 0.1;
         transform: translate3d(-15vw, -12vh, 0);
     }
-
-
 }
 
 /* =========================================================
 CINEMA BARS
 ========================================================= */
-
 .cinema-bar {
     position: fixed;
-
 
     left: 0;
     width: 100%;
@@ -355,8 +299,6 @@ CINEMA BARS
     z-index: 100;
 
     pointer-events: none;
-
-
 }
 
 .cinema-bar-top {
@@ -370,10 +312,8 @@ CINEMA BARS
 /* =========================================================
 FILM FRAME
 ========================================================= */
-
 .film-frame {
     position: fixed;
-
 
     inset: 7vh 0;
 
@@ -381,19 +321,13 @@ FILM FRAME
 
     pointer-events: none;
 
-    border-left:
-        1px solid rgba(255, 255, 255, 0.025);
-
-    border-right:
-        1px solid rgba(255, 255, 255, 0.025);
-
-
+    border-left: 1px solid rgba(255, 255, 255, 0.025);
+    border-right: 1px solid rgba(255, 255, 255, 0.025);
 }
 
 .film-frame::before,
 .film-frame::after {
     content: "";
-
 
     position: absolute;
 
@@ -407,8 +341,6 @@ FILM FRAME
             transparent,
             rgba(255, 255, 255, 0.06),
             transparent);
-
-
 }
 
 .film-frame::before {
@@ -422,10 +354,8 @@ FILM FRAME
 /* =========================================================
 FILM CONTAINER
 ========================================================= */
-
 .film {
     position: fixed;
-
 
     inset: 7vh 0;
 
@@ -434,18 +364,14 @@ FILM CONTAINER
     overflow: hidden;
 
     perspective: 1200px;
-
-
 }
 
 /* =========================================================
 SCENES
 ========================================================= */
-
 .scene {
     position: absolute;
     inset: 0;
-
 
     display: flex;
     align-items: center;
@@ -454,8 +380,7 @@ SCENES
     opacity: 0;
     visibility: hidden;
 
-    transform:
-        scale(1.045) translate3d(0, 18px, 0);
+    transform: scale(1.045) translate3d(0, 18px, 0);
 
     filter: blur(2px);
 
@@ -466,17 +391,13 @@ SCENES
         visibility 0s linear 1.65s;
 
     overflow: hidden;
-
-
 }
 
 .scene.active {
     opacity: 1;
     visibility: visible;
 
-
-    transform:
-        scale(1) translate3d(0, 0, 0);
+    transform: scale(1) translate3d(0, 0, 0);
 
     filter: blur(0);
 
@@ -487,15 +408,10 @@ SCENES
         visibility 0s;
 
     z-index: 2;
-
-
 }
-
-/* subtle scene glow */
 
 .scene::before {
     content: "";
-
 
     position: absolute;
     inset: -20%;
@@ -509,10 +425,7 @@ SCENES
 
     opacity: 0.7;
 
-    animation:
-        sceneGlow 9s ease-in-out infinite alternate;
-
-
+    animation: sceneGlow 9s ease-in-out infinite alternate;
 }
 
 @keyframes sceneGlow {
@@ -521,18 +434,14 @@ SCENES
         opacity: 0.35;
     }
 
-
     to {
         transform: scale(1.08);
         opacity: 0.7;
     }
-
-
 }
 
 .scene::after {
     content: "";
-
 
     position: absolute;
     inset: 0;
@@ -543,18 +452,14 @@ SCENES
         radial-gradient(circle at center,
             transparent 30%,
             rgba(0, 0, 0, 0.14) 100%);
-
-
 }
 
 /* =========================================================
 CONTENT
 ========================================================= */
-
 .scene-center,
 .scene-content {
     position: relative;
-
 
     z-index: 3;
 
@@ -563,17 +468,13 @@ CONTENT
     padding: 40px;
 
     text-align: center;
-
-
 }
 
 /* =========================================================
 TYPOGRAPHY
 ========================================================= */
-
 .eyebrow {
     display: block;
-
 
     margin-bottom: 30px;
 
@@ -584,16 +485,12 @@ TYPOGRAPHY
 
     text-transform: uppercase;
 
-    color:
-        rgba(255, 255, 255, 0.38);
-
-
+    color:rgba(255, 255, 255, 0.38);
 }
 
 .scene h1,
 .scene h2 {
     font-weight: 300;
-
 
     letter-spacing: -0.055em;
 
@@ -602,50 +499,40 @@ TYPOGRAPHY
     color: var(--white);
 
     text-wrap: balance;
-
-
 }
 
 .scene h1 {
-    font-size:
-        clamp(58px, 9vw, 145px);
+    font-size: clamp(58px, 9vw, 145px);
 }
 
 .scene h2 {
-    font-size:
-        clamp(42px, 6.8vw, 105px);
+    font-size: clamp(42px, 6.8vw, 105px);
 }
 
 .scene p {
     margin-top: 26px;
 
 
-    font-size:
-        clamp(14px, 1.25vw, 18px);
+    font-size: clamp(14px, 1.25vw, 18px);
 
     line-height: 1.9;
 
     font-weight: 300;
 
-    color:
-        var(--white-muted);
+    color: var(--white-muted);
 
     text-wrap: balance;
-
-
 }
 
 /* =========================================================
 PLAYFAIR
 ========================================================= */
-
 .scene h2 em,
 .start-content h1 em {
     font-family:
         "Playfair Display",
         Georgia,
         serif;
-
 
     font-style: italic;
 
@@ -658,14 +545,11 @@ PLAYFAIR
     text-shadow:
         0 0 30px rgba(255, 45, 75, 0.16),
         0 0 80px rgba(255, 45, 75, 0.06);
-
-
 }
 
 /* =========================================================
 SCENE 01
 ========================================================= */
-
 .scene-01 {
     background:
         radial-gradient(circle at center,
@@ -687,9 +571,7 @@ SCENE 01
     from {
         opacity: 0;
 
-
-        transform:
-            translateY(42px) scale(0.97);
+        transform: translateY(42px) scale(0.97);
 
         filter: blur(14px);
     }
@@ -697,22 +579,17 @@ SCENE 01
     to {
         opacity: 1;
 
-        transform:
-            translateY(0) scale(1);
+        transform: translateY(0) scale(1);
 
         filter: blur(0);
     }
-
-
 }
 
 @keyframes subtitleReveal {
     from {
         opacity: 0;
 
-
-        transform:
-            translateY(18px);
+        transform: translateY(18px);
 
         filter: blur(5px);
     }
@@ -720,58 +597,42 @@ SCENE 01
     to {
         opacity: 1;
 
-        transform:
-            translateY(0);
+        transform: translateY(0);
 
         filter: blur(0);
     }
-
-
 }
 
 /* =========================================================
 SCENE 02
 ========================================================= */
-
 .scene-02 {
     justify-content: space-between;
-
-
-    padding:
-        8vw 11vw;
-
-
+    padding: 8vw 11vw;
 }
 
 .scene-left {
     position: relative;
-
 
     z-index: 3;
 
     width: 52%;
 
     text-align: left;
-
-
 }
 
 .scene-right {
     position: relative;
-
 
     z-index: 3;
 
     width: 31%;
 
     padding-top: 70px;
-
-
 }
 
 .scene-number {
     display: block;
-
 
     margin-bottom: 28px;
 
@@ -779,36 +640,26 @@ SCENE 02
 
     letter-spacing: 0.48em;
 
-    color:
-        rgba(255, 255, 255, 0.25);
-
-
+    color:rgba(255, 255, 255, 0.25);
 }
 
 .scene-02 .scene-left h2 {
-    font-size:
-        clamp(46px, 6.5vw, 100px);
+    font-size: clamp(46px, 6.5vw, 100px);
 }
 
 .scene-02 .scene-right p {
     margin-top: 0;
 
-
     margin-bottom: 32px;
 
-    font-size:
-        clamp(14px, 1.2vw, 17px);
+    font-size:clamp(14px, 1.2vw, 17px);
 
-    color:
-        rgba(255, 255, 255, 0.48);
-
-
+    color:rgba(255, 255, 255, 0.48);
 }
 
 /* =========================================================
 DYNAMIC TEXT
 ========================================================= */
-
 .friendship-date,
 .love-date,
 .friendship-duration,
@@ -817,32 +668,22 @@ DYNAMIC TEXT
 }
 
 .friendship-duration {
-    color:
-        rgba(255, 255, 255, 0.95);
+    color:rgba(255, 255, 255, 0.95);
 }
 
 .love-duration {
-    color:
-        rgba(255, 255, 255, 0.96);
+    color:rgba(255, 255, 255, 0.96);
 }
 
 .scene-02 .friendship-duration {
-    color:
-        rgba(255, 95, 115, 0.92);
-
-
+    color: rgba(255, 95, 115, 0.92);
     font-weight: 400;
-
-    text-shadow:
-        0 0 25px rgba(255, 60, 90, 0.1);
-
-
+    text-shadow: 0 0 25px rgba(255, 60, 90, 0.1);
 }
 
 /* =========================================================
 STORY TEXT
 ========================================================= */
-
 .story-text {
     max-width: 920px;
 }
@@ -862,11 +703,9 @@ STORY TEXT
 /* =========================================================
 SMALL TEXT
 ========================================================= */
-
 .small-text,
 .change-text {
     display: block;
-
 
     font-size: 11px !important;
 
@@ -876,16 +715,12 @@ SMALL TEXT
 
     text-transform: uppercase;
 
-    color:
-        rgba(255, 255, 255, 0.3);
-
-
+    color:rgba(255, 255, 255, 0.3);
 }
 
 /* =========================================================
 RED ACCENT SCENES
 ========================================================= */
-
 .scene-08,
 .scene-14,
 .scene-23,
@@ -904,14 +739,8 @@ RED ACCENT SCENES
 
 .scene-14 h2 em {
     display: inline-block;
-
-
     margin-top: 7px;
-
-    color:
-        rgba(255, 83, 107, 0.98);
-
-
+    color:rgba(255, 83, 107, 0.98);
 }
 
 /* =========================================================
@@ -920,7 +749,6 @@ DATE
 
 .date {
     position: absolute;
-
 
     top: 13%;
     left: 50%;
@@ -938,17 +766,13 @@ DATE
         rgba(255, 255, 255, 0.28);
 
     white-space: nowrap;
-
-
 }
 
 /* =========================================================
 PHOTOS
 ========================================================= */
-
 .photo {
     position: absolute;
-
 
     overflow: hidden;
 
@@ -961,13 +785,10 @@ PHOTOS
     opacity: 0;
 
     will-change: transform, opacity;
-
-
 }
 
 .photo::before {
     content: "";
-
 
     position: absolute;
     inset: 0;
@@ -984,13 +805,10 @@ PHOTOS
             rgba(255, 40, 70, 0.05));
 
     mix-blend-mode: screen;
-
-
 }
 
 .photo::after {
     content: "";
-
 
     position: absolute;
     inset: 0;
@@ -1004,13 +822,10 @@ PHOTOS
             rgba(0, 0, 0, 0.04),
             transparent 42%,
             rgba(0, 0, 0, 0.36));
-
-
 }
 
 .photo img {
     display: block;
-
 
     width: 100%;
     height: 100%;
@@ -1020,38 +835,24 @@ PHOTOS
     filter:
         saturate(0.72) contrast(1.06) brightness(0.72);
 
-    transform:
-        scale(1.12);
+    transform: scale(1.12);
 
     transition:
         transform 11s var(--ease-cinema),
         filter 3.5s ease;
-
-
 }
 
 .scene.active .photo img {
-    transform:
-        scale(1);
-
-
-    filter:
-        saturate(0.91) contrast(1.05) brightness(0.83);
-
+    transform: scale(1);
+    filter: saturate(0.91) contrast(1.05) brightness(0.83);
 
 }
-
 /* =========================================================
 PHOTO 01
 ========================================================= */
-
 .photo-01 {
-    width:
-        min(52vw, 720px);
-
-
-    height:
-        min(65vh, 650px);
+    width: min(52vw, 720px);
+    height: min(65vh, 650px);
 
     left: 12%;
     top: 50%;
@@ -1062,28 +863,22 @@ PHOTO 01
     transition:
         opacity 2s ease,
         transform 6s var(--ease-cinema);
-
-
 }
 
 .scene.active .photo-01 {
     opacity: 1;
 
-
     transform:
         translateY(-50%) rotate(-2deg) scale(1);
-
-
 }
 
 /* =========================================================
 PHOTO 02
 ========================================================= */
-
 .photo-02 {
-    width: 30vw;
-    height: 45vh;
-
+    width: min(32vw, 520px);
+    aspect-ratio: 1 / 1;
+    height: auto;
 
     left: 19%;
     top: 27%;
@@ -1094,28 +889,23 @@ PHOTO 02
     transition:
         opacity 2s 0.2s ease,
         transform 6s var(--ease-cinema);
-
-
+    z-index: 10;
 }
 
 .scene.active .photo-02 {
     opacity: 1;
 
-
     transform:
         rotate(-4deg) scale(1);
-
-
 }
 
 /* =========================================================
 PHOTO 03
 ========================================================= */
-
 .photo-03 {
-    width: 30vw;
-    height: 48vh;
-
+    width: min(32vw, 520px);
+    aspect-ratio: 1 / 1;
+    height: auto;
 
     right: 18%;
     bottom: 20%;
@@ -1126,18 +916,13 @@ PHOTO 03
     transition:
         opacity 2s 0.45s ease,
         transform 6s 0.15s var(--ease-cinema);
-
-
 }
 
 .scene.active .photo-03 {
     opacity: 1;
 
-
     transform:
         rotate(4deg) scale(1);
-
-
 }
 
 /* =========================================================
@@ -1146,7 +931,6 @@ PHOTO CAPTION
 
 .photo-caption {
     position: absolute;
-
 
     right: 11%;
     bottom: 16%;
@@ -1163,18 +947,13 @@ PHOTO CAPTION
     transition:
         opacity 1.5s 0.8s ease,
         transform 1.5s 0.8s var(--ease-cinema);
-
-
 }
 
 .scene.active .photo-caption {
     opacity: 1;
 
-
     transform:
         translateY(0);
-
-
 }
 
 .photo-caption span {
@@ -1187,8 +966,6 @@ PHOTO CAPTION
 
     color:
         rgba(255, 255, 255, 0.3);
-
-
 }
 
 .photo-caption p {
@@ -1201,8 +978,6 @@ PHOTO CAPTION
 
     color:
         rgba(255, 255, 255, 0.62);
-
-
 }
 
 /* =========================================================
@@ -1212,24 +987,18 @@ FINAL MESSAGE
 .final-message p {
     margin: 10px 0;
 
-
     font-size:
         clamp(15px, 1.7vw, 23px);
 
     color:
         rgba(255, 255, 255, 0.43);
-
-
 }
 
 .final-message h2 {
     margin-top: 50px;
 
-
     font-size:
         clamp(40px, 5.8vw, 82px);
-
-
 }
 
 .scene-final h2 {
@@ -1251,11 +1020,8 @@ HEART SCENE
             rgba(255, 30, 65, 0.1),
             transparent 38%);
 
-
     animation:
         heartSceneGlow 4s ease-in-out infinite alternate;
-
-
 }
 
 @keyframes heartSceneGlow {
@@ -1264,13 +1030,10 @@ HEART SCENE
         opacity: 0.3;
     }
 
-
     to {
         transform: scale(1.18);
         opacity: 0.9;
     }
-
-
 }
 
 .scene-heart h2 {
@@ -1285,7 +1048,6 @@ FILM INFO
 
 .film-info {
     position: fixed;
-
 
     left: 26px;
     right: 26px;
@@ -1311,21 +1073,13 @@ FILM INFO
 
     color:
         rgba(255, 255, 255, 0.22);
-
-
 }
 
 .film-info .love-name {
     max-width: 35vw;
-
-
     overflow: hidden;
-
     text-overflow: ellipsis;
-
     white-space: nowrap;
-
-
 }
 
 .film-info .love-date {
@@ -1340,7 +1094,6 @@ PROGRESS
 .film-progress {
     position: fixed;
 
-
     left: 50%;
     bottom: 9.5vh;
 
@@ -1354,13 +1107,10 @@ PROGRESS
         rgba(255, 255, 255, 0.07);
 
     z-index: 120;
-
-
 }
 
 .film-progress span {
     display: block;
-
 
     width: 0;
     height: 100%;
@@ -1375,8 +1125,6 @@ PROGRESS
 
     transition:
         width 0.35s linear;
-
-
 }
 
 /* =========================================================
@@ -1386,7 +1134,6 @@ START SCREEN
 .start-screen {
     position: fixed;
     inset: 0;
-
 
     z-index: 9999;
 
@@ -1411,13 +1158,10 @@ START SCREEN
     transition:
         opacity 1.8s var(--ease-soft),
         visibility 1.8s;
-
-
 }
 
 .start-screen::before {
     content: "";
-
 
     position: absolute;
     inset: 0;
@@ -1428,8 +1172,6 @@ START SCREEN
             rgba(0, 0, 0, 0.75) 100%);
 
     pointer-events: none;
-
-
 }
 
 .start-screen::after {
@@ -1454,8 +1196,6 @@ START SCREEN
         startGlow 5s ease-in-out infinite alternate;
 
     pointer-events: none;
-
-
 }
 
 @keyframes startGlow {
@@ -1464,28 +1204,21 @@ START SCREEN
         opacity: 0.3;
     }
 
-
     to {
         transform: scale(1.1);
         opacity: 0.8;
     }
-
-
 }
 
 .start-screen.hidden {
     opacity: 0;
     visibility: hidden;
 
-
     pointer-events: none;
-
-
 }
 
 .start-content {
     position: relative;
-
 
     z-index: 2;
 
@@ -1499,18 +1232,13 @@ START SCREEN
     transition:
         transform 1.4s var(--ease-cinema),
         opacity 1.2s ease;
-
-
 }
 
 .start-screen.hidden .start-content {
     transform:
         translateY(-35px) scale(0.98);
 
-
     opacity: 0;
-
-
 }
 
 /* =========================================================
@@ -1519,7 +1247,6 @@ START LABEL
 
 .start-label {
     display: block;
-
 
     margin-bottom: 30px;
 
@@ -1534,8 +1261,6 @@ START LABEL
 
     animation:
         startLabel 3s ease-in-out infinite;
-
-
 }
 
 @keyframes startLabel {
@@ -1545,12 +1270,9 @@ START LABEL
         opacity: 0.28;
     }
 
-
     50% {
         opacity: 0.72;
     }
-
-
 }
 
 /* =========================================================
@@ -1559,7 +1281,6 @@ START TITLE
 
 .start-content h1 {
     margin: 0;
-
 
     font-size:
         clamp(42px, 7vw, 88px);
@@ -1575,8 +1296,6 @@ START TITLE
 
     animation:
         startTitleIn 1.8s var(--ease-cinema) both;
-
-
 }
 
 .start-content h1 em {
@@ -1587,7 +1306,6 @@ START TITLE
 @keyframes startTitleIn {
     from {
         opacity: 0;
-
 
         transform:
             translateY(25px);
@@ -1603,8 +1321,6 @@ START TITLE
 
         filter: blur(0);
     }
-
-
 }
 
 /* =========================================================
@@ -1613,7 +1329,6 @@ START HINT
 
 .start-content p {
     margin-top: 44px;
-
 
     font-size: 9px;
 
@@ -1628,8 +1343,6 @@ START HINT
 
     animation:
         startHint 2.5s ease-in-out infinite;
-
-
 }
 
 @keyframes startHint {
@@ -1640,13 +1353,10 @@ START HINT
         transform: translateY(0);
     }
 
-
     50% {
         opacity: 0.65;
         transform: translateY(-3px);
     }
-
-
 }
 
 /* =========================================================
@@ -1655,7 +1365,6 @@ START LINE
 
 .start-line {
     position: relative;
-
 
     width: 55px;
     height: 1px;
@@ -1669,13 +1378,10 @@ START LINE
 
     animation:
         startLine 2.4s ease-in-out infinite;
-
-
 }
 
 .start-line::after {
     content: "";
-
 
     position: absolute;
 
@@ -1695,8 +1401,6 @@ START LINE
 
     box-shadow:
         0 0 10px rgba(255, 50, 80, 0.45);
-
-
 }
 
 @keyframes startLine {
@@ -1704,7 +1408,6 @@ START LINE
     0%,
     100% {
         transform: scaleX(0.45);
-
 
         opacity: 0.2;
     }
@@ -1714,8 +1417,6 @@ START LINE
 
         opacity: 0.7;
     }
-
-
 }
 
 /* =========================================================
@@ -1723,8 +1424,6 @@ MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
-
-
     .cinema-bar {
         height: 5vh;
     }
@@ -1742,7 +1441,6 @@ MOBILE
         left: 16px;
         right: 16px;
     }
-
 
     .scene-center,
     .scene-content {
@@ -1766,7 +1464,6 @@ MOBILE
         line-height: 1.8;
     }
 
-
     .eyebrow {
         font-size: 7px;
 
@@ -1774,9 +1471,6 @@ MOBILE
 
         margin-bottom: 22px;
     }
-
-
-    /* SCENE 02 */
 
     .scene-02 {
         display: block;
@@ -1806,7 +1500,6 @@ MOBILE
 
 
     /* STORY */
-
     .story-text {
         max-width: 100%;
     }
@@ -1821,7 +1514,6 @@ MOBILE
 
 
     /* PHOTOS */
-
     .photo-01 {
         width: 76vw;
         height: 57vh;
@@ -1830,21 +1522,24 @@ MOBILE
     }
 
     .photo-02 {
-        width: 57vw;
-        height: 36vh;
+        width: 50vw;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        object-fit: cover;
 
         left: 5%;
         top: 20%;
     }
 
     .photo-03 {
-        width: 57vw;
-        height: 38vh;
+        width: 50vw;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        object-fit: cover;
 
         right: 5%;
         bottom: 15%;
     }
-
 
     .photo-caption {
         right: 7%;
@@ -1857,9 +1552,7 @@ MOBILE
         font-size: 13px;
     }
 
-
     /* INFO */
-
     .film-info {
         left: 14px;
         right: 14px;
@@ -1875,13 +1568,11 @@ MOBILE
         max-width: 32vw;
     }
 
-
     .film-progress {
         bottom: 7.5vh;
 
         width: 90px;
     }
-
 
     .date {
         top: 11%;
@@ -1891,9 +1582,7 @@ MOBILE
         letter-spacing: 0.45em;
     }
 
-
     /* START */
-
     .start-content {
         width: 90%;
     }
@@ -1920,17 +1609,12 @@ MOBILE
     .start-line {
         width: 44px;
     }
-
-
 }
 
 /* =========================================================
 VERY SMALL DEVICES
 ========================================================= */
-
 @media (max-width: 420px) {
-
-
     .scene-center,
     .scene-content {
         padding: 22px;
@@ -1964,7 +1648,6 @@ VERY SMALL DEVICES
     .film-info {
         font-size: 5.5px;
     }
-
 }
 
 /* =========================================================
@@ -1972,7 +1655,6 @@ REDUCE MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -1981,5 +1663,4 @@ REDUCE MOTION
 
         transition-duration: 0.01ms !important;
     }
-
 }
